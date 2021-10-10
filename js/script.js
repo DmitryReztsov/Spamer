@@ -40,6 +40,8 @@ function clickButton() {
 			item.onclick = deleteElementAll;
 		} else if (item.classList.contains("functions__button_deleteOne")) {
 			item.onclick = deleteElement;
+		} else if (item.classList.contains("functions__button_round")) {
+			item.onclick = roundElement;
 		} else {
 			item.onclick = addElement;
 		}
@@ -94,4 +96,11 @@ function deleteElement() {
 	setTimeout(function() {
 		spamElements.remove();
 	},500)
+}
+
+function roundElement() {
+	const spamElements = document.querySelectorAll(".spamming-area__element");
+	for (let item of spamElements) {
+		item.classList.toggle("spamming-area__element_round")
+	}
 }
