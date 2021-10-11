@@ -1,7 +1,7 @@
 // <ШРИФТЫ>
 
 // <Подключение шрифта>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 // </Подключение шрифта>
 
 // <Шрифт по умолчанию>
@@ -38,7 +38,7 @@ $blackcolor: #000;
 .container {
 	max-width: 1600px;
 	margin: 0 auto;
-	padding: 0px 0px;
+	padding: 0px 15px;
 }
 //</ОСНОВНАЯ СЕТКА>
 
@@ -57,18 +57,19 @@ $blackcolor: #000;
 	left: 0;
 	display: flex;
 	flex-direction: column;
-	background-color:rgb(42, 38, 38);
+	background-color: rgb(42, 38, 38);
 }
 
 //Кнопки===========================
 
 .functions {
-
 	&__row {
 		padding: 50px 0px 50px 0px;
 		display: flex;
 		justify-content: center;
 		column-gap: 40px;
+		row-gap: 40px;
+		flex-wrap: wrap;
 	}
 
 	&__columns {
@@ -83,6 +84,9 @@ $blackcolor: #000;
 		align-items: center;
 		justify-content: center;
 		box-shadow: 2px 2px 10px 2px rgb(34, 34, 33);
+		&_transform {
+			background-color: rgb(224, 148, 48);
+		}
 		&_delete {
 			background-color: rgb(190, 45, 45);
 		}
@@ -92,6 +96,17 @@ $blackcolor: #000;
 		padding: 10px;
 		font-size: 30px;
 		color: rgb(42, 38, 38);
+	}
+
+	@media (max-width: 560px) {
+		&__row {
+			padding: 20px 0px 20px 0px;
+		}
+
+		&__columns {
+			flex: 0 1 40%;
+			min-height: 100%;
+		}
 	}
 }
 
@@ -104,6 +119,7 @@ $blackcolor: #000;
 		align-items: center;
 		flex-wrap: wrap;
 		row-gap: 50px;
+		justify-content: center;
 	}
 
 	&__column {
@@ -116,20 +132,42 @@ $blackcolor: #000;
 			opacity: 1;
 		}
 	}
-	
+
 	&__element {
 		margin: 0 auto;
 		height: 100px;
 		width: 100px;
 		background-color: $secondarycolor;
-		box-shadow: 2px 2px 10px 2px rgb(34, 34, 33);
 		transition: all 0.5s ease 0s;
 		&_round {
 			border-radius: 50%;
 			transition: all 0.5s ease 0s;
 		}
+		&_triangle {
+			transition: all 0.5s ease 0s;
+			background-color: transparent;
+			height: 0px;
+			width: 0px;
+			border-left: 50px solid transparent;
+			border-right: 50px solid transparent;
+			border-bottom: 100px solid $secondarycolor;
+		}
+	}
+
+	@media (max-width: 560px) {
+		&__element {
+			height: 50px;
+			width: 50px;
+		}
+
+		&__element {
+			&_triangle {
+				border-left: 25px solid transparent;
+				border-right: 25px solid transparent;
+				border-bottom: 50px solid $secondarycolor;
+			}
+		}
 	}
 }
-
 
 //</ОСНОВНОЙ БЛОК>

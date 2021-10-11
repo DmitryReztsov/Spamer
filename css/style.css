@@ -99,7 +99,7 @@ h6 {
 .container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0px 0px;
+  padding: 0px 15px;
 }
 
 .ibg {
@@ -129,6 +129,12 @@ h6 {
   line-height: 1.2;
   margin: 0px 0px 20px 0px;
 }
+@media (max-width: 560px) {
+  .header__row {
+    text-align: center;
+    padding: 50px 0px 20px 0px;
+  }
+}
 
 .page {
   position: absolute;
@@ -157,6 +163,9 @@ h6 {
   -webkit-column-gap: 40px;
      -moz-column-gap: 40px;
           column-gap: 40px;
+  row-gap: 40px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .functions__columns {
   -webkit-box-flex: 0;
@@ -179,6 +188,9 @@ h6 {
   -webkit-box-shadow: 2px 2px 10px 2px #222221;
           box-shadow: 2px 2px 10px 2px #222221;
 }
+.functions__button_transform {
+  background-color: #e09430;
+}
 .functions__button_delete {
   background-color: #be2d2d;
 }
@@ -186,6 +198,17 @@ h6 {
   padding: 10px;
   font-size: 30px;
   color: #2a2626;
+}
+@media (max-width: 560px) {
+  .functions__row {
+    padding: 20px 0px 20px 0px;
+  }
+  .functions__columns {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 40%;
+            flex: 0 1 40%;
+    min-height: 100%;
+  }
 }
 
 .spamming-area__row {
@@ -199,6 +222,9 @@ h6 {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   row-gap: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .spamming-area__column {
   -webkit-box-flex: 0;
@@ -219,8 +245,6 @@ h6 {
   height: 100px;
   width: 100px;
   background-color: yellowgreen;
-  -webkit-box-shadow: 2px 2px 10px 2px #222221;
-          box-shadow: 2px 2px 10px 2px #222221;
   -webkit-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s;
 }
@@ -228,4 +252,25 @@ h6 {
   border-radius: 50%;
   -webkit-transition: all 0.5s ease 0s;
   transition: all 0.5s ease 0s;
+}
+.spamming-area__element_triangle {
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  background-color: transparent;
+  height: 0px;
+  width: 0px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid yellowgreen;
+}
+@media (max-width: 560px) {
+  .spamming-area__element {
+    height: 50px;
+    width: 50px;
+  }
+  .spamming-area__element_triangle {
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid yellowgreen;
+  }
 }

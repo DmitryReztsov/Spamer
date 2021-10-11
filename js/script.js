@@ -42,6 +42,10 @@ function clickButton() {
 			item.onclick = deleteElement;
 		} else if (item.classList.contains("functions__button_round")) {
 			item.onclick = roundElement;
+		} else if (item.classList.contains("functions__button_triangle")) {
+			item.onclick = triangleElement;
+		} else if (item.classList.contains("functions__button_square")) {
+			item.onclick = squareElement;
 		} else {
 			item.onclick = addElement;
 		}
@@ -49,29 +53,35 @@ function clickButton() {
 }
 
 function addElement() {
-	const cloneElement = element.cloneNode(true);
-	area.prepend(cloneElement);
-	setTimeout(function() {
-		cloneElement.classList.add("spamming-area__column_show");
+	const newElement = document.createElement("div")
+	newElement.classList.add("spamming-area__column")
+	newElement.innerHTML = `<div class="spamming-area__element"></div>`;
+	area.prepend(newElement);
+	setTimeout(function () {
+		newElement.classList.add("spamming-area__column_show");
 	})
 }
 
 function addElementFive() {
 	for (let i = 0; i < 5; i++) {
-		const cloneElement = element.cloneNode(true);
-		area.prepend(cloneElement);
-		setTimeout(function() {
-			cloneElement.classList.add("spamming-area__column_show");
+		const newElement = document.createElement("div")
+		newElement.classList.add("spamming-area__column")
+		newElement.innerHTML = `<div class="spamming-area__element"></div>`;
+		area.prepend(newElement);
+		setTimeout(function () {
+			newElement.classList.add("spamming-area__column_show");
 		})
 	}
 }
 
 function addElementTen() {
 	for (let i = 0; i < 10; i++) {
-		const cloneElement = element.cloneNode(true);
-		area.prepend(cloneElement);
-		setTimeout(function() {
-			cloneElement.classList.add("spamming-area__column_show");
+		const newElement = document.createElement("div")
+		newElement.classList.add("spamming-area__column")
+		newElement.innerHTML = `<div class="spamming-area__element"></div>`;
+		area.prepend(newElement);
+		setTimeout(function () {
+			newElement.classList.add("spamming-area__column_show");
 		})
 	}
 }
@@ -79,28 +89,53 @@ function addElementTen() {
 function deleteElementAll() {
 	const spamElements = document.querySelectorAll(".spamming-area__column");
 	for (let item of spamElements) {
-		setTimeout(function() {
+		setTimeout(function () {
 			item.classList.remove("spamming-area__column_show");
 		})
-		setTimeout(function() {
+		setTimeout(function () {
 			item.remove();
-		},500)
+		}, 500)
 	}
 }
 
 function deleteElement() {
 	const spamElements = document.querySelector(".spamming-area__column");
-	setTimeout(function() {
+	setTimeout(function () {
 		spamElements.classList.remove("spamming-area__column_show");
 	})
-	setTimeout(function() {
+	setTimeout(function () {
 		spamElements.remove();
-	},500)
+	}, 500)
 }
 
 function roundElement() {
 	const spamElements = document.querySelectorAll(".spamming-area__element");
 	for (let item of spamElements) {
-		item.classList.toggle("spamming-area__element_round")
+		if (item.classList.contains("spamming-area__element_round")) {
+			return
+		} else {
+			item.classList.remove("spamming-area__element_triangle")
+			item.classList.add("spamming-area__element_round")
+		}
+	}
+}
+
+function triangleElement() {
+	const spamElements = document.querySelectorAll(".spamming-area__element");
+	for (let item of spamElements) {
+		if (item.classList.contains("spamming-area__element_triangle")) {
+			return
+		} else {
+			item.classList.remove("spamming-area__element_round")
+			item.classList.add("spamming-area__element_triangle")
+		}
+	}
+}
+
+function squareElement() {
+	const spamElements = document.querySelectorAll(".spamming-area__element");
+	for (let item of spamElements) {
+		item.classList.remove("spamming-area__element_round")
+		item.classList.remove("spamming-area__element_triangle")
 	}
 }
