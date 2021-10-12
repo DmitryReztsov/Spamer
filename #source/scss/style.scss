@@ -84,11 +84,27 @@ $blackcolor: #000;
 		align-items: center;
 		justify-content: center;
 		box-shadow: 2px 2px 10px 2px rgb(34, 34, 33);
+		transition: all 0.5s ease 0s;
+		&_add {
+			&:hover {
+				box-shadow: 0px 0px 10px 2px $secondarycolor;
+				transition: all 0.5s ease 0s;
+			}
+		}
 		&_transform {
 			background-color: rgb(224, 148, 48);
+			&:hover {
+				box-shadow: 0px 0px 10px 2px rgb(224, 148, 48);
+			}
 		}
 		&_delete {
 			background-color: rgb(190, 45, 45);
+			&:hover {
+				box-shadow: 0px 0px 10px 2px rgb(190, 45, 45);
+			}
+		}
+		&:active {
+			box-shadow: 0px 0px 4px 4px rgba(34, 34, 33, 0.5) inset;
 		}
 	}
 
@@ -171,3 +187,51 @@ $blackcolor: #000;
 }
 
 //</ОСНОВНОЙ БЛОК>
+
+.scrollUp {
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	&__body {
+		background-color: $primarycolor;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0px 0px 10px 10px rgb(34, 34, 33);
+		transition: all 0.5s ease 0s;
+		&:hover {
+			box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.5);
+			transition: all 0.5s ease 0s;
+		}
+		&:active {
+			box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
+			transition: all 0.5s ease 0s;
+		}
+		i {
+			color: rgb(42, 38, 38);
+			font-size: 50px;
+		}
+	}
+
+	@media (max-width: 560px) {
+		bottom: 25px;
+		right: 25px;
+		&__body {
+			width: 50px;
+			height: 50px;
+			box-shadow: 0px 0px 5px 2px rgb(34, 34, 33);
+			&:hover {
+				box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.5);
+			}
+			&:active {
+				box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.5) inset;
+			}
+			i {
+				font-size: 24px;
+			}
+		}
+	}
+}

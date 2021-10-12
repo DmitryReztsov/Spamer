@@ -50,13 +50,16 @@ function clickButton() {
 			item.onclick = addElement;
 		}
 	}
+
+	const scrollButton = document.querySelector(".scrollUp");
+	scrollButton.onclick = scrollingTop;
 }
 
 function addElement() {
 	const newElement = document.createElement("div")
 	newElement.classList.add("spamming-area__column")
 	newElement.innerHTML = `<div class="spamming-area__element"></div>`;
-	area.prepend(newElement);
+	area.append(newElement);
 	setTimeout(function () {
 		newElement.classList.add("spamming-area__column_show");
 	})
@@ -67,7 +70,7 @@ function addElementFive() {
 		const newElement = document.createElement("div")
 		newElement.classList.add("spamming-area__column")
 		newElement.innerHTML = `<div class="spamming-area__element"></div>`;
-		area.prepend(newElement);
+		area.append(newElement);
 		setTimeout(function () {
 			newElement.classList.add("spamming-area__column_show");
 		})
@@ -79,7 +82,7 @@ function addElementTen() {
 		const newElement = document.createElement("div")
 		newElement.classList.add("spamming-area__column")
 		newElement.innerHTML = `<div class="spamming-area__element"></div>`;
-		area.prepend(newElement);
+		area.append(newElement);
 		setTimeout(function () {
 			newElement.classList.add("spamming-area__column_show");
 		})
@@ -123,12 +126,8 @@ function roundElement() {
 function triangleElement() {
 	const spamElements = document.querySelectorAll(".spamming-area__element");
 	for (let item of spamElements) {
-		if (item.classList.contains("spamming-area__element_triangle")) {
-			return
-		} else {
 			item.classList.remove("spamming-area__element_round")
 			item.classList.add("spamming-area__element_triangle")
-		}
 	}
 }
 
@@ -138,4 +137,14 @@ function squareElement() {
 		item.classList.remove("spamming-area__element_round")
 		item.classList.remove("spamming-area__element_triangle")
 	}
+}
+
+//Scroll Up
+
+function scrollingTop (){
+	window.scrollTo({
+		top:0,
+		left:0,
+		behavior: "smooth"
+	});
 }

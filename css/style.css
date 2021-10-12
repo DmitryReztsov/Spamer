@@ -187,12 +187,32 @@ h6 {
           justify-content: center;
   -webkit-box-shadow: 2px 2px 10px 2px #222221;
           box-shadow: 2px 2px 10px 2px #222221;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.functions__button_add:hover {
+  -webkit-box-shadow: 0px 0px 10px 2px yellowgreen;
+          box-shadow: 0px 0px 10px 2px yellowgreen;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 .functions__button_transform {
   background-color: #e09430;
 }
+.functions__button_transform:hover {
+  -webkit-box-shadow: 0px 0px 10px 2px #e09430;
+          box-shadow: 0px 0px 10px 2px #e09430;
+}
 .functions__button_delete {
   background-color: #be2d2d;
+}
+.functions__button_delete:hover {
+  -webkit-box-shadow: 0px 0px 10px 2px #be2d2d;
+          box-shadow: 0px 0px 10px 2px #be2d2d;
+}
+.functions__button:active {
+  -webkit-box-shadow: 0px 0px 4px 4px rgba(34, 34, 33, 0.5) inset;
+          box-shadow: 0px 0px 4px 4px rgba(34, 34, 33, 0.5) inset;
 }
 .functions__text {
   padding: 10px;
@@ -272,5 +292,69 @@ h6 {
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 50px solid yellowgreen;
+  }
+}
+
+.scrollUp {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+.scrollUp__body {
+  background-color: #fff;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: 0px 0px 10px 10px #222221;
+          box-shadow: 0px 0px 10px 10px #222221;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.scrollUp__body:hover {
+  -webkit-box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.5);
+          box-shadow: 0px 0px 10px 6px rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.scrollUp__body:active {
+  -webkit-box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
+          box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5) inset;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.scrollUp__body i {
+  color: #2a2626;
+  font-size: 50px;
+}
+@media (max-width: 560px) {
+  .scrollUp {
+    bottom: 25px;
+    right: 25px;
+  }
+  .scrollUp__body {
+    width: 50px;
+    height: 50px;
+    -webkit-box-shadow: 0px 0px 5px 2px #222221;
+            box-shadow: 0px 0px 5px 2px #222221;
+  }
+  .scrollUp__body:hover {
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.5);
+            box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.5);
+  }
+  .scrollUp__body:active {
+    -webkit-box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.5) inset;
+            box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.5) inset;
+  }
+  .scrollUp__body i {
+    font-size: 24px;
   }
 }
