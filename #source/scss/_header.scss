@@ -1,8 +1,12 @@
 .header {
+	&__search {
+		text-align: right;
+		margin: 30px 0px 0px 0px;
+	}
 
 	&__row {
 		text-align: center;
-		padding: 100px 0px 50px 0px;
+		padding: 70px 0px 50px 0px;
 	}
 
 	&__title {
@@ -22,7 +26,6 @@
 	}
 
 	@media (max-width: 560px) {
-		
 		&__row {
 			text-align: center;
 			padding: 50px 0px 20px 0px;
@@ -30,4 +33,70 @@
 		&__title {
 		}
 	}
+}
+
+.search-form {
+	position: relative;
+	&.active {
+		input {
+			visibility: visible;
+			opacity: 1;
+			transition: all 0.5s ease 0s;
+			transform: translateX(0%);
+		}
+		i {
+			visibility: hidden;
+			opacity: 0;
+			transition: all 0.5s ease 0s;
+		}
+		span {
+			visibility: visible;
+			opacity: 1;
+			transition: all 0.5s ease 0s;
+			transform: translateX(0%);
+
+		}
+	}
+	&__input {
+		width: 300px;
+		height: 30px;
+		font-size: 20px;
+		color: $primarycolor;
+		background-color: rgb(42, 38, 38);
+		border-bottom: 1px solid $primarycolor;
+		visibility: hidden;
+		opacity: 0;
+		transition: all 0.5s ease 0s;
+		transform: translateX(100%);
+		padding: 20px 15px;
+		&:focus {
+			transition: all 0.5s ease 0s;
+			border: 1px solid $primarycolor;
+			border-radius: 10px;
+		}
+
+	}
+	i {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 30px;
+		transition: all 0.5s ease 0s;
+		&:hover {
+			color: $secondarycolor;
+		}
+	}
+
+	&__span {
+		display: block;
+		margin: 10px 0px 0px 0px;
+		visibility: hidden;
+		opacity: 0;
+		transition: all 0.5s ease 0s;
+		transform: translateX(250px);
+		&::first-letter {
+			color: $secondarycolor;
+		}
+	}
+
 }

@@ -1,84 +1,39 @@
-function ibg() {
-
-	$.each($('.ibg'), function (index, val) {
-		if ($(this).find('img').length > 0) {
-			$(this).css('background-image', 'url("' + $(this).find('img').attr('src') + '")');
-		}
-	});
-}
-
-ibg();
-
-$('.icon-menu').click(function (event) {
-	$(this).toggleClass('active');
-	$('.menu__body').toggleClass('active');
-	$('body').toggleClass('lock');
-});
-
-const swiper = new Swiper('.swiper', {
-	// If we need pagination
-	pagination: {
-		el: '.swiper-pagination',
-		clickable: true,
-	}
-});
 
 const area = document.querySelector(".spamming-area__row");
 
-const element = document.querySelector(".spamming-area__column");
+const buttons = document.querySelector(".functions__row");
 
+//Вешаем обработчики на кнопки
 
-
-function clickButton() {
-	const button = document.querySelectorAll(".functions__button");
-	for (let item of button) {
-		if (item.classList.contains("functions__button_addTen")) {
-			item.onclick = addElementTen;
-		} else if (item.classList.contains("functions__button_addFive")) {
-			item.onclick = addElementFive;
-		} else if (item.classList.contains("functions__button_deleteAll")) {
-			item.onclick = deleteElementAll;
-		} else if (item.classList.contains("functions__button_deleteOne")) {
-			item.onclick = deleteElement;
-		} else if (item.classList.contains("functions__button_round")) {
-			item.onclick = roundElement;
-		} else if (item.classList.contains("functions__button_triangle")) {
-			item.onclick = triangleElement;
-		} else if (item.classList.contains("functions__button_square")) {
-			item.onclick = squareElement;
-		} else {
-			item.onclick = addElement;
-		}
+buttons.addEventListener("click", function (event) {
+	if (event.target.closest(".functions__button_addOne")) {
+		addElements(1);
 	}
-
-	const scrollButton = document.querySelector(".scrollUp");
-	scrollButton.onclick = scrollingTop;
-}
-
-function addElement() {
-	const newElement = document.createElement("div")
-	newElement.classList.add("spamming-area__column")
-	newElement.innerHTML = `<div class="spamming-area__element"></div>`;
-	area.append(newElement);
-	setTimeout(function () {
-		newElement.classList.add("spamming-area__column_show");
-	})
-}
-
-function addElementFive() {
-	for (let i = 0; i < 5; i++) {
-		const newElement = document.createElement("div")
-		newElement.classList.add("spamming-area__column")
-		newElement.innerHTML = `<div class="spamming-area__element"></div>`;
-		area.append(newElement);
-		setTimeout(function () {
-			newElement.classList.add("spamming-area__column_show");
-		})
+	if (event.target.closest(".functions__button_addFive")) {
+		addElements(5);
 	}
-}
+	if (event.target.closest(".functions__button_addTen")) {
+		addElements(10);
+	}
+	if (event.target.closest(".functions__button_deleteAll")) {
+		deleteElementAll();
+	}
+	if (event.target.closest(".functions__button_deleteOne")) {
+		deleteElement();
+	}
+	if (event.target.closest(".functions__button_round")) {
+		roundElement();
+	}
+	if (event.target.closest(".functions__button_triangle")) {
+		triangleElement();
+	}
+	if (event.target.closest(".functions__button_square")) {
+		squareElement();
+	}
+});
 
-function addElementTen() {
-	for (let i = 0; i < 10; i++) {
+function addElements(num) {
+	for (let i = 0; i < num; i++) {
 		const newElement = document.createElement("div")
 		newElement.classList.add("spamming-area__column")
 		newElement.innerHTML = `<div class="spamming-area__element"></div>`;
@@ -114,20 +69,16 @@ function deleteElement() {
 function roundElement() {
 	const spamElements = document.querySelectorAll(".spamming-area__element");
 	for (let item of spamElements) {
-		if (item.classList.contains("spamming-area__element_round")) {
-			return
-		} else {
-			item.classList.remove("spamming-area__element_triangle")
-			item.classList.add("spamming-area__element_round")
-		}
+		item.classList.remove("spamming-area__element_triangle")
+		item.classList.add("spamming-area__element_round")
 	}
 }
 
 function triangleElement() {
 	const spamElements = document.querySelectorAll(".spamming-area__element");
 	for (let item of spamElements) {
-			item.classList.remove("spamming-area__element_round")
-			item.classList.add("spamming-area__element_triangle")
+		item.classList.remove("spamming-area__element_round")
+		item.classList.add("spamming-area__element_triangle")
 	}
 }
 
@@ -141,10 +92,89 @@ function squareElement() {
 
 //Scroll Up
 
-function scrollingTop (){
+const scrollButton = document.querySelector(".scrollUp");
+scrollButton.addEventListener("click", scrollingTop);
+
+function scrollingTop() {
 	window.scrollTo({
-		top:0,
-		left:0,
+		top: 0,
+		left: 0,
 		behavior: "smooth"
 	});
 }
+
+// Форма поиска
+
+const searchForm = document.querySelector(".search-form");
+
+document.addEventListener("click", openForm);
+
+function openForm(event) {
+	if (event.target.closest(".search-form__icon")) {
+		searchForm.classList.add("active");
+	}
+	if (!event.target.closest(".search-form")) {
+		searchForm.classList.remove("active");
+	}
+};
+
+document.addEventListener("keyup", closeForm);
+
+function closeForm(event) {
+	if (event.code === "Escape") {
+		searchForm.classList.remove("active");
+	}
+}
+
+const inputForm = document.querySelector(".search-form__input");
+const spanCounter = document.querySelector(".search-form__span");
+
+
+
+inputForm.addEventListener("keyup", countLetters);
+inputForm.addEventListener("keydown", function(event) {
+	if (event.repeat) countLetters();
+})
+
+function countLetters() {
+	const counted = inputForm.value.length;
+	spanCounter.innerHTML = `${counted} введенных символов`;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function ibg() {
+
+// 	$.each($('.ibg'), function (index, val) {
+// 		if ($(this).find('img').length > 0) {
+// 			$(this).css('background-image', 'url("' + $(this).find('img').attr('src') + '")');
+// 		}
+// 	});
+// }
+
+// ibg();
+
+// $('.icon-menu').click(function (event) {
+// 	$(this).toggleClass('active');
+// 	$('.menu__body').toggleClass('active');
+// 	$('body').toggleClass('lock');
+// });
+
+// const swiper = new Swiper('.swiper', {
+// 	// If we need pagination
+// 	pagination: {
+// 		el: '.swiper-pagination',
+// 		clickable: true,
+// 	}
+// });
